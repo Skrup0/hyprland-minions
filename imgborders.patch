@@ -1,0 +1,23 @@
+--- a/ImgBorder.cpp
++++ b/ImgBorder.cpp
+@@ -244,6 +244,20 @@
+                            .discardMode = DISCARD_ALPHA});
+   }
+ 
++  // Top center image
++
++  static const auto TEX_TOP_CENTER = ImgUtils::load(std::string(getenv("HOME")) + "/.config/hypr/assets/minion_eyes.png");
++  const CBox box_tc = {
++      {box.x + (box.width - TEX_TOP_CENTER->m_size.x * scale) / 2.,
++       box.y + (BORDER_TOP - TEX_TOP_CENTER->m_size.y * scale) / 2.},
++      TEX_TOP_CENTER->m_size * scale};
++  g_pHyprRenderer->draw({.tex = TEX_TOP_CENTER,
++                         .box = box_tc,
++                         .a = a,
++                         .damage = box_tc,
++                         .blur = shouldBlur(),
++                         .discardMode = DISCARD_ALPHA});
++
+   // Restore previous values
+ 
+   g_pHyprRenderer->m_renderData.useNearestNeighbor = wasUsingNearestNeighbour;
