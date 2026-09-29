@@ -26,3 +26,11 @@ cmake --build build -j$(nproc)
 ```sh
 hyprctl plugin load ~/Documents/imgborders/build/libimgborders.so
 ```
+
+Make sure to also enable hyprbars to allow the windows to be dragged
+
+```sh
+hyprpm update
+hyprpm add https://github.com/hyprwm/hyprland-plugins
+hyprpm enable hyprbars
+```
